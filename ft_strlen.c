@@ -6,17 +6,18 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:34:33 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/07 11:36:56 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/11 10:44:36 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t		(char *s)
+#include "libft.h"
+
+size_t	ft_strlen(char *s)
 {
 	int size;
 
 	size = 0;
-	while (s != '\0')
+	while (s[size] != '\0')
 		size++;
 	return(size);
-
 }
