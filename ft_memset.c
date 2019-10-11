@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 10:10:01 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/11 10:42:42 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/11 13:42:17 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	*ft_memset(void *b, int c, size_t len)
 		((char *)b)[i] = c;
 		i++;
 	}
-	return(b);
+	return (b);
 }

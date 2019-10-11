@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:30:07 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/11 10:40:15 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/11 13:44:31 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_itoa(int a)
 {
-	char *result;
-	int i;
+	char	*result;
+	int		i;
 
 	i = 0;
 	if (a < 0)
@@ -30,10 +30,5 @@ char	*ft_itoa(int a)
 		ft_itoa(a * 10);
 		ft_itoa(a % 10);
 	}
-	return(&a);
-}
-
-int	main()
-{
-	printf("%d", ft_itoa(4));
+	return (&a);
 }

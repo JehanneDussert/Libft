@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 16:47:04 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/11 10:40:41 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/11 12:24:53 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,10 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		*(char *)dst = *(char *)src;
 		if (*(char *)src == (char)c)
-			return(++dst);
+			return (++dst);
 		dst++;
 		src++;
 		i++;
 	}
-	return(NULL);
-}
-
-int	main()
-{
-	void *tab1;
-	char *tab2;
-	tab1 = malloc(30);
-	tab2 = "Hey";
-
-	printf("%s\n", ft_memccpy(tab1, tab2, 'e', 6));
-	printf("%s", memccpy(tab1, tab2, 'e', 6));
+	return (NULL);
 }

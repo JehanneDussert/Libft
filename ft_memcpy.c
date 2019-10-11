@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:19:03 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/11 10:41:57 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/11 13:42:37 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		src++;
 		i++;
 	}
-	return(dst - i);
+	return (dst - i);
 }

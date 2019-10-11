@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:53:55 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/11 10:37:35 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/11 14:20:05 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	char *tab;
-	size_t i;
-	
+	unsigned char	*tab;
+	size_t			i;
+
 	i = 0;
-	if (!(tab = malloc(sizeof(size)*count)))
-		return(NULL);
-	while (i < count)
+	if (!(tab = (unsigned char *)malloc(size * count)))
+		return (NULL);
+	while (i < count * size)
 	{
-		tab[i] = 0;
+		tab[i] = '\0';
 		i++;
 	}
-	return(tab);
+	return (tab);
 }
