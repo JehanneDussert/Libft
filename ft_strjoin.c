@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 09:59:24 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/11 15:11:05 by jdussert         ###   ########.fr       */
+/*   Created: 2019/10/14 10:33:52 by jdussert          #+#    #+#             */
+/*   Updated: 2019/10/14 12:22:31 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t i;
+	char	*dst;
+	int		i;
+	int		j;
+	int		c;
 
-	i = 0;
-	while (i < n)
+	i = ft_strlen((char *)s1);
+	j = i + ft_strlen((char *)s2);
+	c = 0;
+	if (!(dst = malloc(sizeof(char *) * j + 1)))
+		return (NULL);
+	ft_memcpy(dst, s1, i);
+	while (i < j)
 	{
-		((char *)s)[i] = 0;
+		dst[i] = s2[c];
 		i++;
+		c++;
 	}
+	dst[i] = '\0';
+	return (dst);
 }
