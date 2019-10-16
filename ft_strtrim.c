@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 12:19:03 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/16 11:03:26 by jdussert         ###   ########.fr       */
+/*   Created: 2019/10/15 14:04:44 by jdussert          #+#    #+#             */
+/*   Updated: 2019/10/16 11:21:06 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t i;
+	int		i;
+	int		len;
+	char	*str;
 
 	i = 0;
-	while (i < n)
-	{
-		*(char *)dst = *(char *)src;
-		dst++;
-		src++;
-		i++;
-	}
-	return (dst - i);
+	len = ft_strlen((char *)s1);
+	if (!(str = malloc(len) + 1))
+		return (NULL);
+	while (ft_strchr((char *)set, *s1))
+		s1++;
+	while (ft_strchr((char *)set, s1[len - 1]))
+		len--;
+	ft_memcpy(str, s1, len);
+	str[len] = '\0';
+	return (str);
 }
