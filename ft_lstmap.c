@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 08:58:14 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/23 15:25:33 by jdussert         ###   ########.fr       */
+/*   Created: 2019/10/23 12:20:31 by jdussert          #+#    #+#             */
+/*   Updated: 2019/10/23 13:58:12 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		i;
-	char	*s2;
+	t_list	*new_list;
 
-	i = 0;
-	while (s1[i])
-		i++;
-	if (!(s2 = malloc(sizeof(*s2) * (i + 1))))
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		s2[i] = s1[i];
-	s2[i] = '\0';
-	return (s2);
+	while (lst)
+	{
+		if (!(new_list = malloc(sizeof(t_list))))
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		f(lst->content);
+		new_list = lst->content;
+		lst = lst->next;
+		new_list = new_list->next;
+	}
+	return (new_list);
 }

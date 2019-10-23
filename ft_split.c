@@ -5,78 +5,101 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/14 11:00:53 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/14 18:25:22 by jdussert         ###   ########.fr       */
+/*   Created: 2019/10/21 10:06:31 by jdussert          #+#    #+#             */
+/*   Updated: 2019/10/21 16:59:02 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
+static int	nb_of_words(const char *s, char c)
 {
-	int	i;
-	int	count;
+	int		count;
+	int		i;
 
+	count = 0;
 	i = 0;
-	count = 1;
 	while (s[i])
 	{
-		if (s[i + 1] == c && s[i] != c)
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			count++;
 		i++;
 	}
 	return (count);
 }
 
-static size_t	ft_length(char const *s, char c)
+static int	s_len(const char *s, char c)
 {
-	size_t	length;
+	int		len;
 
-	length = 0;
-	while (s[length] != c && s[length])
-		length++;
-	return (length);
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len + 1);
 }
 
-static void	ft_free_dst(char **dst, size_t i)
+static char	**s_cpy(char **dst, const char *s, char c)
 {
-	while (i--)
-		free(dst[i]);
-	free(dst);
-}
-
-static char	**ft_cpy(char const *s, char c, curseur)
-{
-	int	j;
-	j = 0;
-	while(*s && *s != c)
-		dst[curseur][j++] = *s++;
-	dst[curseur++][j] = '\0';
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**dst;
-	int	i;
+	int		i;
+	int		j;
+	int		k;
 
 	i = 0;
-	if (!(dst = (char **)malloc(sizeof(char *) * ft_count_words(s, c) + 1)))
-		return (NULL);
-	while (*s)
+	j = 0;
+	while (s[j])
 	{
-		if (*s == c)
-			s++;
-		else
-		{
-			if (!(dst[i] = (char *)malloc(sizeof(char)
-				* (ft_length(s, c) + 1))))
-			{
-				ft_free_dst(dst, i);
-				return (NULL);
-			}
-			ft_cpy(s, c, i);
-		}
+		k = 0;
+		while (s[j] && s[j] == c)
+			j++;
+		while (s[j] && s[j] != c)
+			dst[i][k++] = s[j++];
+		if (s[j - 1] != c)
+			dst[i++][k] = '\0';
 	}
 	dst[i] = NULL;
+	return (dst);
+}
+
+static char	**dst_malloc(char **dst, const char *s, char c, int max)
+{
+	int		i;
+	int		j;
+	int		len;
+
+	i = 0;
+	j = 0;
+	while (s[j])
+	{
+		while (s[j] && s[j] == c)
+			j++;
+		while (s[j] && s[j] != c)
+		{
+			len = s_len(&s[j], c);
+			j += len;
+			if (i < max)
+				if (!(dst[i++] = (char *)malloc(sizeof(char) * len)))
+				{
+					while (i-- > 0)
+						free(dst[i]);
+					free(dst);
+					return (NULL);
+				}
+		}
+	}
+	return (dst);
+}
+
+char		**ft_split(char const *s, char c)
+{
+	char	**dst;
+	int		max;
+
+	if (!s)
+		return (NULL);
+	max = nb_of_words(s, c);
+	if (!(dst = (char **)malloc(sizeof(char *) * (max + 1))))
+		return (NULL);
+	dst_malloc(dst, s, c, max);
+	s_cpy(dst, s, c);
 	return (dst);
 }

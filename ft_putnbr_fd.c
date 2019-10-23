@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:55:00 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/16 12:26:14 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/23 14:19:48 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ void	ft_putchar(int n, int fd)
 {
 	n = n + 48;
 	write(fd, &n, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
 }
 
 void	ft_putnbr_fd(int n, int fd)

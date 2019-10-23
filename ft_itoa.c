@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:30:07 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/20 13:02:20 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/21 09:33:55 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,24 @@ int		str_len(int nbr)
 	return (i);
 }
 
-char	*ft_itoa(int nbr)
+char	*ft_itoa(int n)
 {
 	char		*str;
 	int			len;
 	long int	nb;
 
-	len = str_len(nbr) + 1;
-	if (nbr == 0)
+	len = str_len(n) + 1;
+	if (n == 0)
 		return (nbr_is_zero());
 	else
 	{
-		nb = (long int)nbr;
-		if (nbr < 0)
+		nb = (long int)n;
+		if (n < 0)
 			nb *= -1;
 		if (!(str = (char *)malloc(sizeof(char) * len + 1)))
 			return (NULL);
 		str[len] = '\0';
-		if (nbr < 0)
+		if (n < 0)
 			str[0] = '-';
 		while (nb > 0)
 		{
