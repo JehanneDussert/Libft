@@ -6,7 +6,7 @@
 #    By: jdussert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/14 08:57:55 by jdussert          #+#    #+#              #
-#    Updated: 2019/10/23 15:27:34 by jdussert         ###   ########.fr        #
+#    Updated: 2019/10/23 16:41:12 by jdussert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
 
 NAME	= libft.a
 
-$(NAME) : ${OBJS}
-	ar rc ${NAME} ${OBJS}
+$(NAME) : ${OBJS} ${OBJS_BONUS}
+	ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
 	ranlib ${NAME}
 
 all : ${NAME}
@@ -42,7 +42,7 @@ bonus	: ${OBJS} ${OBJS_BONUS}
 	ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
 
 clean :
-	rm -f ${OBJS}
+	rm -f ${OBJS} ${OBJS_BONUS}
 
 fclean : clean
 	rm -f ${NAME}

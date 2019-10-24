@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:33:52 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/14 12:22:31 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/24 10:08:34 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 	int		c;
 
-	i = ft_strlen((char *)s1);
-	j = i + ft_strlen((char *)s2);
-	c = 0;
-	if (!(dst = malloc(sizeof(char *) * j + 1)))
-		return (NULL);
-	ft_memcpy(dst, s1, i);
-	while (i < j)
+	j = 0;
+	if (s1)
 	{
-		dst[i] = s2[c];
-		i++;
-		c++;
+		i = ft_strlen((char *)s1);
+		if (s2)
+			j = i + ft_strlen((char *)s2);
+		c = 0;
+		if (!(dst = malloc(sizeof(char *) * (j + 1))))
+			return (NULL);
+		ft_memcpy(dst, s1, i);
+		while (s1 && s2 && i < j)
+			dst[i++] = s2[c++];
+		dst[i] = '\0';
+		return (dst);
 	}
-	dst[i] = '\0';
-	return (dst);
+	else
+		return (NULL);
 }

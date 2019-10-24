@@ -6,24 +6,24 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:30:07 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/21 09:33:55 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/24 10:34:10 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*nbr_is_zero(void)
+static char	*nbr_is_zero(void)
 {
 	char	*str;
 
-	if (!(str = malloc(sizeof(char *) * 2)))
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
 		return (NULL);
 	str[0] = 48;
 	str[1] = '\0';
 	return (str);
 }
 
-int		str_len(int nbr)
+static int	str_len(int nbr)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ int		str_len(int nbr)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char		*str;
 	int			len;
