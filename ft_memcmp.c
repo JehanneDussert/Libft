@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:30:18 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/25 16:08:54 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/25 17:24:45 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t 			i;
+	size_t			i;
 	unsigned char	*string1;
 	unsigned char	*string2;
 
