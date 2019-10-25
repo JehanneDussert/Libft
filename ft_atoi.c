@@ -6,13 +6,13 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:24:39 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/24 10:24:55 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/25 15:33:11 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int				i;
 	unsigned int	result;

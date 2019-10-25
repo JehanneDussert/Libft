@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 15:05:47 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/25 11:33:49 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/25 16:43:53 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	s_len(const char *s, char c)
 	return (len);
 }
 
-char		**ft_sans_emma(char **dst, char const *s, char c, int len)
+char		**ft_cpy(char **dst, char const *s, char c, int len)
 {
 	int		i;
 
@@ -67,6 +67,6 @@ char		**ft_split(char const *s, char c)
 	len = count_words(s, c);
 	if (!(dst = malloc(sizeof(dst) * (len + 1))))
 		return (NULL);
-	ft_sans_emma(dst, s, c, len);
+	ft_cpy(dst, s, c, len);
 	return (dst);
 }
