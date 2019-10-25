@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 12:19:03 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/16 11:03:26 by jdussert         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:35:51 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	size_t i;
 
 	i = 0;
+	if (!n || src == dst)
+		return (dst);
 	while (i < n)
 	{
 		*(char *)dst = *(char *)src;

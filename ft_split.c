@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 10:06:31 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/21 16:59:02 by jdussert         ###   ########.fr       */
+/*   Created: 2019/10/24 15:05:47 by jdussert          #+#    #+#             */
+/*   Updated: 2019/10/25 11:33:49 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nb_of_words(const char *s, char c)
+static int	count_words(const char *s, char c)
 {
 	int		count;
 	int		i;
@@ -21,7 +21,7 @@ static int	nb_of_words(const char *s, char c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+		if ((s[i] != c && s[i + 1] == c) || (s[i] != c && s[i + 1] == '\0'))
 			count++;
 		i++;
 	}
@@ -35,71 +35,38 @@ static int	s_len(const char *s, char c)
 	len = 0;
 	while (s[len] && s[len] != c)
 		len++;
-	return (len + 1);
+	return (len);
 }
 
-static char	**s_cpy(char **dst, const char *s, char c)
+char		**ft_sans_emma(char **dst, char const *s, char c, int len)
 {
 	int		i;
-	int		j;
-	int		k;
 
 	i = 0;
-	j = 0;
-	while (s[j])
+	while (*s && i < len)
 	{
-		k = 0;
-		while (s[j] && s[j] == c)
-			j++;
-		while (s[j] && s[j] != c)
-			dst[i][k++] = s[j++];
-		if (s[j - 1] != c)
-			dst[i++][k] = '\0';
+		while (*s == c && *s)
+			s++;
+		if (!(dst[i] = malloc(sizeof(char) * (s_len(s, c) + 1))))
+			return (NULL);
+		dst[i++] = ft_substr(s, 0, s_len(s, c));
+		while (*s && *s != c)
+			s++;
 	}
 	dst[i] = NULL;
-	return (dst);
-}
-
-static char	**dst_malloc(char **dst, const char *s, char c, int max)
-{
-	int		i;
-	int		j;
-	int		len;
-
-	i = 0;
-	j = 0;
-	while (s[j])
-	{
-		while (s[j] && s[j] == c)
-			j++;
-		while (s[j] && s[j] != c)
-		{
-			len = s_len(&s[j], c);
-			j += len;
-			if (i < max)
-				if (!(dst[i++] = (char *)malloc(sizeof(char) * len)))
-				{
-					while (i-- > 0)
-						free(dst[i]);
-					free(dst);
-					return (NULL);
-				}
-		}
-	}
 	return (dst);
 }
 
 char		**ft_split(char const *s, char c)
 {
 	char	**dst;
-	int		max;
+	int		len;
 
 	if (!s)
 		return (NULL);
-	max = nb_of_words(s, c);
-	if (!(dst = (char **)malloc(sizeof(char *) * (max + 1))))
+	len = count_words(s, c);
+	if (!(dst = malloc(sizeof(dst) * (len + 1))))
 		return (NULL);
-	dst_malloc(dst, s, c, max);
-	s_cpy(dst, s, c);
+	ft_sans_emma(dst, s, c, len);
 	return (dst);
 }
