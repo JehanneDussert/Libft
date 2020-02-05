@@ -67,6 +67,7 @@ void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
 char				*ft_itoa(int n);
+char				*ft_itoa_base(long int n, int base, char *tab);
 char				**ft_split(char const *s, char c);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
