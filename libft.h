@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jdussert <jdussert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:12:39 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/25 16:47:49 by jdussert         ###   ########.fr       */
+/*   Updated: 2020/03/12 12:30:57 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,10 @@ int					ft_first(char *haystack, char *needle);
 char				*ft_ref_parse(char *haystack, const char *needle,
 					size_t len);
 int					ft_int_len(long int nbr, int base);
+
+int					ft_abs(double nb);
+int					ft_sqrt(int n);
+int					ft_rounded_down(float f);
+int					ft_degre_to_rad(int deg);
 
 #endif
