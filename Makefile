@@ -12,7 +12,7 @@
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS	= ft_memset.c ft_bzero.c ft_strlen.c ft_toupper.c ft_tolower.c \
 		  ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strlcpy.c ft_strlcat.c \
@@ -27,7 +27,7 @@ SRCS_BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			  ft_lstmap.c
 
 SRCS_ADD	= ft_itoa_base.c ft_last.c ft_int_len.c ft_first.c ft_ref_parse.c \
-				math/ft_abs.c ft_degree_to_rad.c ft_rounded_down.c ft_sqrt.c
+				ft_sqrt.c ft_memalloc.c
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -41,14 +41,10 @@ $(NAME) : ${OBJS}
 	ar rcs ${NAME} ${OBJS} 
 	ranlib ${NAME}
 
-all : ${NAME}
+all : ${NAME} ${OBJS_BONUS} ${OBJS_ADD}
 
 bonus	: ${OBJS} ${OBJS_BONUS}
 	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS}
-	ranlib ${NAME}
-
-add		: ${OBJS} ${OBJS_BONUS} ${OBJS_ADD}
-	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS} ${OBJS_ADD}
 	ranlib ${NAME}
 
 clean :

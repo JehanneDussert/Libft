@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_degree_to_rad.c                                 :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdussert <jdussert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/12 12:27:13 by jdussert          #+#    #+#             */
-/*   Updated: 2020/03/12 12:27:47 by jdussert         ###   ########.fr       */
+/*   Created: 2020/06/27 12:50:34 by jdussert          #+#    #+#             */
+/*   Updated: 2020/06/27 12:50:39 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Convertit les degres en radian
-*/
+#include "libft.h"
 
-int		ft_degre_to_rad(int deg)
+void	*ft_memalloc(size_t size)
 {
-	int res;
+	void	*result;
 
-	res = deg * 3.14 / 180;
-	return (res);
+	if (!(result = malloc(size)))
+		return (NULL);
+	ft_memset(result, 0, size);
+	return (result);
 }
