@@ -27,7 +27,7 @@ SRCS_BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			  ft_lstmap.c
 
 SRCS_ADD	= ft_itoa_base.c ft_last.c ft_int_len.c ft_first.c ft_ref_parse.c \
-				ft_sqrt.c ft_memalloc.c
+				ft_sqrt.c
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -42,6 +42,8 @@ $(NAME) : ${OBJS}
 	ranlib ${NAME}
 
 all : ${NAME} ${OBJS_BONUS} ${OBJS_ADD}
+	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS} ${OBJS_ADD}
+	ranlib ${NAME}
 
 bonus	: ${OBJS} ${OBJS_BONUS}
 	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS}
