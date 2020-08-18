@@ -6,7 +6,7 @@
 /*   By: jdussert <jdussert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:12:39 by jdussert          #+#    #+#             */
-/*   Updated: 2020/03/12 12:30:57 by jdussert         ###   ########.fr       */
+/*   Updated: 2020/08/14 12:17:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,15 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 int					ft_last(char *haystack, char *needle);
-int					ft_first(char *haystack, char *needle);
+int					ft_first(char *haystack, char *needle, int *start);
 char				*ft_ref_parse(char *haystack, const char *needle,
-					size_t len);
+					size_t len, int *i);
 int					ft_int_len(long int nbr, int base);
 
 int					ft_abs(double nb);
 int					ft_sqrt(int n);
 int					ft_rounded_down(float f);
 int					ft_degre_to_rad(int deg);
+void				ft_free(void **ptr);
 
 #endif

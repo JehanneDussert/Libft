@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_first.c                                         :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdussert <jdussert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/12 16:34:34 by jdussert          #+#    #+#             */
-/*   Updated: 2020/08/17 12:07:11 by user42           ###   ########.fr       */
+/*   Created: 2020/07/27 15:27:40 by jdussert          #+#    #+#             */
+/*   Updated: 2020/07/28 14:09:59 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_first(char *haystack, char *needle, int *start)
+void	ft_free(void **ptr)
 {
-	int	len_h;
-	int	len_n;
-	int	i;
-	int	j;
-
-	i = *start;
-	j = 0;
-	len_h = ft_strlen(haystack);
-	len_n = ft_strlen(needle);
-	while (j < len_n && i < len_h && haystack[i] == needle[j])
-	{
-		if (j + 1 == len_n)
-			return (1);
-		i++;
-		j++;
-	}
-	return (0);
+	free(*ptr);
+	*ptr = NULL;
 }
