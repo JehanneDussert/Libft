@@ -6,7 +6,7 @@
 /*   By: jdussert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:04:44 by jdussert          #+#    #+#             */
-/*   Updated: 2019/10/24 09:54:06 by jdussert         ###   ########.fr       */
+/*   Updated: 2021/06/09 15:19:02 by jdussert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		len;
 	char	*str;
 
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
 	else if (!set)
 		return ((char *)s1);
